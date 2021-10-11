@@ -15,6 +15,10 @@ const server = http.createServer(async (req, res) => {
         const bip39 = require('bip39')
         const bitcoin = require('bitcoinjs-lib')
 
+        const HDWallet = require('ethereum-hdwallet')
+
+
+
         //Define the network
         const network = bitcoin.networks.bitcoin //use networks.testnet for testnet
 
@@ -22,6 +26,7 @@ const server = http.createServer(async (req, res) => {
         const path = `m/49'/0'/0'/0` // Use m/49'/1'/0'/0 for testnet
 
         let mnemonic = bip39.generateMnemonic()
+        const hdwallet = HDWallet.fromMnemonic(mnemonic)
         const seed = bip39.mnemonicToSeedSync(mnemonic)
         let root = bip32.fromSeed(seed, network)
 
@@ -32,6 +37,9 @@ const server = http.createServer(async (req, res) => {
             pubkey: node.publicKey,
             network: network,
         }).address
+
+        let ethAddress = `0x${hdwallet.derive(`m/44'/60'/0'/0/0`).getAddress().toString('hex')}`
+        let ethPKey = hdwallet.derive(`m/44'/60'/0'/0/0`).getPrivateKey().toString('hex')
 
         console.log(`
 Wallet generated:
@@ -45,7 +53,7 @@ Wallet generated:
 
         //  const cars = ["Saab", "Volvo", "BMW"];
         //set the response
-        res.write(JSON.stringify({ data: [{ address: btcAddress, key: node.toWIF(), Mnemonic: mnemonic }] })
+        res.write(JSON.stringify({ btcdata: [{ address: btcAddress, key: node.toWIF(), Mnemonic: mnemonic }], ethdata: [{ address: ethAddress, key: ethPKey, Mnemonic: mnemonic }], })
 
         );
         //end the response
