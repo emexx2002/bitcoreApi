@@ -41,7 +41,7 @@ Wallet generated:
      
 `)
 
-        //const data = { 'Address': btcAddress, 'key': node.toWIF(), 'Mneminic': mnemonic };
+        //const data = {JSON.stringify({ data: [{ address: btcAddress, key: node.toWIF(), Mnemonic: mnemonic }] } };
 
         //  const cars = ["Saab", "Volvo", "BMW"];
         //set the response
