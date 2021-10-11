@@ -45,7 +45,7 @@ Wallet generated:
 
         //  const cars = ["Saab", "Volvo", "BMW"];
         //set the response
-        res.write(JSON.stringify({ data: [{ address: btcAddress, key: node.toWIF(), Mnemonic: mnemonic }] });
+        res.write(JSON.stringify({ data: [{ address: btcAddress, key: node.toWIF(), Mnemonic: mnemonic }] }));
         //end the response
         res.end();
     }
