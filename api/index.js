@@ -98,12 +98,12 @@ Wallet generated:
         );
         //end the response
         res.end();
-    } else if (req.url === "/api/v2/transfer" && req.method === "GET") {
+    } else if (req.url === "/api/transfer" && req.method === "GET") {
         res.writeHead(200, { "Content-Type": "application/json" });
-        transfer = require('./transfer')
-        let hello = transfer();
+      //  transfer = require('./transfer')
+       // let hello = transfer();
         //set the response
-        res.write(hello);
+        res.write('hello');
         //end the response
         res.end();
 
