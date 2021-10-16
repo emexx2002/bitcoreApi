@@ -10,9 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@trustwallet/wallet-core": "^2.6.12",
     "bip32": "^2.0.6",
     "bip39": "^3.0.4",
     "bitcoinjs-lib": "^5.2.0",
-    "ethereum-hdwallet": "0.0.26"
+    "bitcore-lib-doge": "^8.25.10",
+    "cardano-wallet-js": "^1.2.3",
+    "ethereum-hdwallet": "0.0.26",
+    "ripple-lib": "^1.10.0",
+    "tron-create-address": "^0.1.10"
   }
 }
